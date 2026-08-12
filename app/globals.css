@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-azul: #123c7a;
+  --color-azul-oscuro: #0d2c5a;
+  --color-azul-palido: #dce6f5;
+  --color-rojo: #d42a26;
+  --color-tinta: #1a1a17;
+  --color-humo: #4a4f45;
+  --color-puna: #e8eae3;
+  --color-tejido: #c6285f;
+  --color-whatsapp: #25d366;
+
+  --font-display: var(--font-archivo);
+  --font-texto: var(--font-public-sans);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-tinta);
+  font-family: var(--font-texto), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Banda tejida: motivo geométrico de los textiles de la región.
+   Es el elemento distintivo del sitio. Puro CSS, no pesa nada. */
+.banda {
+  height: 10px;
+  background-color: var(--color-azul);
+  background-image:
+    linear-gradient(45deg, var(--color-tejido) 25%, transparent 25%, transparent 75%, var(--color-tejido) 75%),
+    linear-gradient(45deg, var(--color-tejido) 25%, transparent 25%, transparent 75%, var(--color-tejido) 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+}
+
+/* Foco visible para quien navega con teclado. No es opcional. */
+:focus-visible {
+  outline: 3px solid var(--color-rojo);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
